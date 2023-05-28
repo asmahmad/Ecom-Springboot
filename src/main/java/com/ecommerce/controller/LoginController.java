@@ -38,47 +38,41 @@ public class LoginController {
         return "forgot-password";
     }
     @PostMapping("/register-new")
-    public String addNewAdmin(@Valid @ModelAttribute("adminDto") AdminDto adminDto,
+    public String addNewAdmin(@Valid @ModelAttribute("adminDto")AdminDto adminDto,
                               BindingResult result,
-                              Model model,
-                              HttpSession session) {
-        System.out.println("PostMapping register-new");
-        model.addAttribute("adminDto", new AdminDto());
-        try {
-            session.removeAttribute("message");
-            if (result.hasErrors()) {
-                System.out.println("PostMapping register-new: try block: if result.hasErrors");
-                for (ObjectError error : result.getAllErrors()) {
-                    System.out.println(error.getDefaultMessage());
-                }
-                model.addAttribute("adminDto", adminDto);
-                result.toString();
-                return "register";
-            }
-            String username = adminDto.getUsername();
-            Admin admin = adminService.findByUsername(username);
-            if (admin != null) {
-                model.addAttribute("adminDto", adminDto);
-                System.out.println("Admin not null");
-                session.setAttribute("meaage", "Your email has been registered already!");
-                return "register";
-            }
-            if(adminDto.getPassword().equals(adminDto.getRepeatPassword())){
-                adminService.save(adminDto);
-                System.out.println(("success"));
-                session.setAttribute("message", "Registered Successfully!");
-                model.addAttribute("adminDto", adminDto);
-            }else{
-                model.addAttribute("adminDto", adminDto);
-                session.setAttribute("message", "Password is not same!");
-                System.out.println("password not same");
-                return "register";
-            }
+                              Model model){
 
-        } catch (Exception e) {
-          session.setAttribute("message", "Service Error, please try again later");
-        }
+         try {
 
-        return "register";
+             if(result.hasErrors()){
+                 model.addAttribute("adminDto", adminDto);
+                 result.toString();
+                 return "register";
+             }
+             String username = adminDto.getUsername();
+             Admin admin = adminService.findByUsername(username);
+             if(admin != null){
+                 model.addAttribute("adminDto", adminDto);
+                 System.out.println("admin not null");
+                model.addAttribute("emailError", "Your email has been registered!");
+                 return "register";
+             }
+             if(adminDto.getPassword().equals(adminDto.getRepeatPassword())){
+                 adminService.save(adminDto);
+                 System.out.println("success");
+                model.addAttribute("success", "Register successfully!");
+                 model.addAttribute("adminDto", adminDto);
+             }else{
+                 model.addAttribute("adminDto", adminDto);
+                 model.addAttribute("passwordError", "Your password maybe wrong! Check again!");
+                 System.out.println("password not same");
+                 return "register";
+             }
+         }catch (Exception e){
+             e.printStackTrace();
+             model.addAttribute("errors", "The server has been wrong!");
+         }
+         return "register";
+
     }
 }
