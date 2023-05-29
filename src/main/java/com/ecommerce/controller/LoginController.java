@@ -54,13 +54,13 @@ public class LoginController {
              if(admin != null){
                  model.addAttribute("adminDto", adminDto);
                  System.out.println("admin not null");
-                model.addAttribute("emailError", "Your email has been registered!");
+                 model.addAttribute("emailError", "Your email has already been registered!");
                  return "register";
              }
              if(adminDto.getPassword().equals(adminDto.getRepeatPassword())){
                  adminService.save(adminDto);
                  System.out.println("success");
-                model.addAttribute("success", "Register successfully!");
+                 model.addAttribute("success", "Register successfully!");
                  model.addAttribute("adminDto", adminDto);
              }else{
                  model.addAttribute("adminDto", adminDto);
