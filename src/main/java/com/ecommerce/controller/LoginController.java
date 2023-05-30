@@ -1,32 +1,38 @@
 package com.ecommerce.controller;
 
-import com.ecommerce.dto.AdminDto;
-import com.ecommerce.model.Admin;
-import com.ecommerce.service.AdminService;
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-
-import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
+import com.ecommerce.dto.AdminDto;
+import com.ecommerce.model.Admin;
+import com.ecommerce.service.AdminService;
 
 @Controller
 public class LoginController {
 
     @Autowired
     private AdminService adminService;
+    
     @GetMapping("/login")
     public String loginForm(){
 
         return "login";
     }
-
+    
+    @RequestMapping("/index")
+    public String home() {
+ 
+    	return "index";
+    }
+    
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
         model.addAttribute("adminDto", new AdminDto()); // Add the adminDto object to the model
@@ -75,4 +81,6 @@ public class LoginController {
          return "register";
 
     }
+
+    
 }

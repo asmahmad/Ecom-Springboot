@@ -49,6 +49,7 @@ public class AdminConfiguration extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
                 .loginProcessingUrl("/do-login")
                 .defaultSuccessUrl("/index")
+                .failureForwardUrl("/login?error")
                 .permitAll()
                 .and()
                 .logout()
@@ -64,10 +65,5 @@ public class AdminConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(daoAuthenticationProvider());
     }
-
-
-
-
-
 
 }
