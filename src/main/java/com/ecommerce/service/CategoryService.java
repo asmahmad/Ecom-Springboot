@@ -22,9 +22,15 @@ public class CategoryService {
 	
 	public Category save(Category category) {
 		
-		Category categorySave = new Category(category.getName());
+		try {
+			
+			Category categorySave = new Category(category.getName());
+			return categoryRepository.save(categorySave);
 		
-		return categoryRepository.save(categorySave);
+		}catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	public Category getById(Long id) {
