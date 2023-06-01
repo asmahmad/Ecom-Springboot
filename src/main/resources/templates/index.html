@@ -1,20 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://wwww.thymeleaf.org">
-
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
 
 <head th:replace="fragments::header">
-
-
 </head>
-
 <body id="page-top">
-
 	<!-- Page Wrapper -->
 	<div id="wrapper">
-
 		<!-- Sidebar -->
-		<ul th:replace="fragments::sidebar">
-
+		<ul th:replace="fragments :: sidebar">
 		</ul>
 		<!-- End of Sidebar -->
 
@@ -25,7 +18,7 @@
 			<div id="content">
 
 				<!-- Topbar -->
-				<nav th:replace="fragments ::topbar"></nav>
+				<nav th:replace="fragments :: topbar"></nav>
 				<!-- End of Topbar -->
 
 				<!-- Begin Page Content -->
@@ -36,7 +29,7 @@
 			<!-- End of Main Content -->
 
 			<!-- Footer -->
-			<footer th:replace="fragments::footer"> </footer>
+			<footer th:replace="fragments :: footer"> </footer>
 			<!-- End of Footer -->
 
 		</div>
@@ -48,19 +41,16 @@
 	<!-- Scroll to Top Button-->
 	<a th:replace="fragments :: scroll"> </a>
 
-	<!-- Logout Modal-->
-	<!-- <div th:replalce="logoutModel"></div> -->
+	<!--&lt;!&ndash; Logout Modal&ndash;&gt;
+    <div th:replace = "fragments :: logoutModal"></div>-->
 
-	<!-- Scroll to Top Bottom -->
-	<div th:replace="fragments::scroll"></div>
-
-
+	<div th:replace="fragments::script"></div>
 	<!-- Page level plugins -->
-	<script th:src="@{vendor/chart.js/Chart.min.js}"></script>
+	<script th:src="@{/vendor/chart.js/Chart.min.js}"></script>
 
 	<!-- Page level custom scripts -->
-	<script th:src="@{js/demo/chart-area-demo.js}"></script>
-	<script th:src="@{js/demo/chart-pie-demo.js}"></script>
+	<script th:src="@{/js/demo/chart-area-demo.js}"></script>
+	<script th:src="@{/js/demo/chart-pie-demo.js}"></script>
 
 </body>
 
