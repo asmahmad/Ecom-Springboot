@@ -29,7 +29,7 @@ public class Product {
 	@Column(name="product_id")
 	private Long id;
 	private String name;
-	private String descrption;
+	private String description;
 	private double costPrice;
 	private double salePrice;
 	private int currentQuantity;
@@ -55,11 +55,11 @@ public class Product {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getDescrption() {
-		return descrption;
+	public String getDescription() {
+		return description;
 	}
-	public void setDescrption(String descrption) {
-		this.descrption = descrption;
+	public void setDescription(String descrption) {
+		this.description = descrption;
 	}
 	public double getCostPrice() {
 		return costPrice;
@@ -91,16 +91,16 @@ public class Product {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
-	public boolean isIs_activated() {
+	public boolean is_activated() {
 		return is_activated;
 	}
-	public void setIs_activated(boolean is_activated) {
+	public void set_activated(boolean is_activated) {
 		this.is_activated = is_activated;
 	}
-	public boolean isIs_deleted() {
+	public boolean is_deleted() {
 		return is_deleted;
 	}
-	public void setIs_deleted(boolean is_deleted) {
+	public void set_deleted(boolean is_deleted) {
 		this.is_deleted = is_deleted;
 	}
 	

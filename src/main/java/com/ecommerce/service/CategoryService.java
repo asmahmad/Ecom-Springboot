@@ -64,6 +64,10 @@ public class CategoryService {
 		category.set_deleted(false);
 		categoryRepository.save(category);
 	}
-	
+	public List<Category> findAllByActivated(){
+		
+		return categoryRepository.findAllByActivated();
+		
+	}
 
 }
