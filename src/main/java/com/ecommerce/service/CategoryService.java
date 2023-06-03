@@ -55,7 +55,7 @@ public class CategoryService {
 		category.set_deleted(true);
 		category.set_activated(false);
 		categoryRepository.save(category);
-		categoryRepository.deleteById(id);
+		//categoryRepository.deleteById(id);
 	
 	}
 	public void enabledById(Long id) {
