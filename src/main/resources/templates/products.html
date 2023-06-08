@@ -61,7 +61,7 @@
 								<td th:text="${product.costPrice}"></td>
 								<td th:text="${product.currentQuantity}"></td>
 								<td><img src="" style="height: 40px; width: 40px;"
-									th:src="*{'data:image/jpeg;base64,' + {product.image}}"></td>
+									th:src="|data:image/jpeg;base64,${product.image}|"></td>
 								<td><a
 									th:href="@{/update-product/{id} (id = ${product.id})}"
 									class="btn btn-primary">Update</a></td>
@@ -91,7 +91,7 @@
 						</ul>
 					</nav>
 				</div>
-				/.container-fluid
+				<!-- /.container-fluid -->
 
 			</div>
 			<!-- End of Main Content -->
